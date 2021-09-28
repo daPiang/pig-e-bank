@@ -27,6 +27,7 @@ class _LoginState extends State<Login> {
     } else {
       print('Unrecognized credentials');
       _isAdmin = false;
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
 
@@ -60,6 +61,8 @@ class _LoginState extends State<Login> {
                   authLogin();
                   if (_isAdmin == false) {
                     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  } else {
+                    Navigator.pushNamed(context, '/second');
                   }
                 }),
           ],
