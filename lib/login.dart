@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pig_e_bank/dashboard.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -22,10 +23,10 @@ class _LoginState extends State<Login> {
 
   void authLogin() {
     if (userController.text == "admin" && passController.text == "password") {
-      print('Welcome back, admin.');
+      //print('Welcome back, admin.');
       _isAdmin = true;
     } else {
-      print('Unrecognized credentials');
+      //print('Unrecognized credentials');
       _isAdmin = false;
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
@@ -59,10 +60,9 @@ class _LoginState extends State<Login> {
                 child: Text('Login'),
                 onPressed: () {
                   authLogin();
-                  if (_isAdmin == false) {
-                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                  } else {
-                    Navigator.pushNamed(context, '/second');
+                  if (_isAdmin == true) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Dashboard()));
                   }
                 }),
           ],
