@@ -49,7 +49,7 @@ class Dashboard extends StatelessWidget {
                             Container(
                               padding: EdgeInsets.only(right: 60),
                               child: Text(
-                                '[Name]',
+                                'Admin',
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
                                 fontSize: 22.0,
@@ -62,7 +62,7 @@ class Dashboard extends StatelessWidget {
                                   Container(
                                     padding: EdgeInsets.only(right: 60),
                                     child: Text(
-                                      'Account Number',
+                                      '003821934275',
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
                                         fontSize: 16.0,
@@ -98,9 +98,9 @@ class Dashboard extends StatelessWidget {
                   children: [
                     Row(children: [
                       Padding(
-                        padding: EdgeInsets.only(top: 50,bottom:50, left: 30),
+                        padding: EdgeInsets.only(top: 40,bottom:40, left: 30),
                         child: ElevatedButton(
-                          child: Text('Balance Inquiry', style:TextStyle(fontFamily: 'Poppins', color: Color(0xFF141c48))),
+                          child: Text('Balance Inquiry', textAlign: TextAlign.center,style:TextStyle(fontFamily: 'Poppins', color: Color(0xFF141c48))),
                           onPressed: (){
 
                           }, 
@@ -108,15 +108,15 @@ class Dashboard extends StatelessWidget {
                            backgroundColor: MaterialStateProperty.all(Color (0xFFf8bdd0)),
                            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),),
                           padding: MaterialStateProperty.all(EdgeInsets.all(25)),
-                          elevation: MaterialStateProperty.all(0),
+                          elevation: MaterialStateProperty.all(2),
                           fixedSize: MaterialStateProperty.all(Size(150, 150))
                          ),),
                       ),
                       
                       Padding(
-                        padding: EdgeInsets.only(top: 50,bottom:50, left: 30),
+                        padding: EdgeInsets.only(top: 40,bottom:40, left: 30),
                         child: ElevatedButton(
-                          child: Text('Transaction History',style:TextStyle(fontFamily: 'Poppins', color: Color(0xFF141c48))),
+                          child: Text('Transaction History',textAlign: TextAlign.center,style:TextStyle(fontFamily: 'Poppins', color: Color(0xFF141c48))),
                           onPressed: (){
                             
                           }, 
@@ -124,7 +124,7 @@ class Dashboard extends StatelessWidget {
                            backgroundColor: MaterialStateProperty.all(Color (0xFFf8bdd0)),
                            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),),
                           padding: MaterialStateProperty.all(EdgeInsets.all(25)),
-                          elevation: MaterialStateProperty.all(0),
+                          elevation: MaterialStateProperty.all(2),
                           fixedSize: MaterialStateProperty.all(Size(150, 150))
                          ),),
                       ),
@@ -133,15 +133,15 @@ class Dashboard extends StatelessWidget {
                        Padding(
                         padding: EdgeInsets.only(left: 30),
                         child: ElevatedButton(
-                          child: Text('Transfer Money',style:TextStyle(fontFamily: 'Poppins', color: Color(0xFF141c48))),
+                          child: Text('Transfer Money',textAlign: TextAlign.center,style:TextStyle(fontFamily: 'Poppins', color: Color(0xFF141c48))),
                           onPressed: (){
 
                           }, 
                           style: ButtonStyle(
                            backgroundColor: MaterialStateProperty.all(Color (0xFFf8bdd0)),
-                           shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),),
+                           shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
                           padding: MaterialStateProperty.all(EdgeInsets.all(25)),
-                          elevation: MaterialStateProperty.all(0),
+                          elevation: MaterialStateProperty.all(2),
                           fixedSize: MaterialStateProperty.all(Size(150, 150))
                          ),),
                       ),
@@ -149,7 +149,7 @@ class Dashboard extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(left: 30),
                         child: ElevatedButton(
-                          child: Text('Investments',style:TextStyle(fontFamily: 'Poppins', color: Color(0xFF141c48))),
+                          child: Text('Investments',textAlign: TextAlign.center,style:TextStyle(fontFamily: 'Poppins', color: Color(0xFF141c48))),
                           onPressed: (){
 
                           }, 
@@ -157,11 +157,15 @@ class Dashboard extends StatelessWidget {
                            backgroundColor: MaterialStateProperty.all(Color (0xFFf8bdd0)),
                            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),),
                           padding: MaterialStateProperty.all(EdgeInsets.all(25)),
-                          elevation: MaterialStateProperty.all(0),
+                          elevation: MaterialStateProperty.all(2),
                           fixedSize: MaterialStateProperty.all(Size(150, 150))
                          ),),
                       ),
                     ],
+                    ),
+                    Padding(
+                      padding:  EdgeInsets.only(top:35, left: 230),
+                      child: FloatingActionButton.extended(onPressed: (){}, label: Text('Help', style: TextStyle(fontFamily: 'Poppins')), icon: Icon(Icons.help_outline_outlined), backgroundColor: Colors.yellow[800],),
                     )
                   ],
                 ),
