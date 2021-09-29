@@ -18,14 +18,18 @@ class Dashboard extends StatelessWidget {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Icon(Icons.menu,
-                            color: Colors.lightBlue[100], size: 30.0),
-                        Icon(Icons.search,
-                            color: Colors.lightBlue[100], size: 25.0),
-                    ],
+                    Padding(
+                      padding:  EdgeInsets.symmetric(horizontal: 15),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Icon(Icons.menu,
+                              color: Colors.lightBlue[100], size: 30.0),
+                          Icon(Icons.search,
+                              color: Colors.lightBlue[100], size: 25.0),
+                          
+                      ],
+                      ),
                     ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -35,7 +39,8 @@ class Dashboard extends StatelessWidget {
                           top:120,
                           child: CircleAvatar(
                           radius: 35.0,
-                          backgroundImage: AssetImage('images/avatar.png'),
+                          backgroundImage: AssetImage('assets/images/avatar.png'),
+                          backgroundColor: Colors.transparent,
                           ),
                         ),
                         Column(
@@ -44,10 +49,11 @@ class Dashboard extends StatelessWidget {
                             Container(
                               padding: EdgeInsets.only(right: 60),
                               child: Text(
-                                'User',
+                                '[Name]',
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
                                 fontSize: 22.0,
+                                fontFamily: 'Poppins',
                                 color: Color (0xFFf8bdd0),
                                 fontWeight: FontWeight.w800,
                                       ),
@@ -56,7 +62,7 @@ class Dashboard extends StatelessWidget {
                                   Container(
                                     padding: EdgeInsets.only(right: 60),
                                     child: Text(
-                                      'Savings Account',
+                                      'Account Number',
                                       textAlign: TextAlign.start,
                                       style: TextStyle(
                                         fontSize: 16.0,
@@ -94,8 +100,10 @@ class Dashboard extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(top: 50,bottom:50, left: 30),
                         child: ElevatedButton(
-                          child: Text('Balance Inquiry'),
-                          onPressed: (){}, 
+                          child: Text('Balance Inquiry', style:TextStyle(fontFamily: 'Poppins', color: Color(0xFF141c48))),
+                          onPressed: (){
+
+                          }, 
                           style: ButtonStyle(
                            backgroundColor: MaterialStateProperty.all(Color (0xFFf8bdd0)),
                            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),),
@@ -108,8 +116,10 @@ class Dashboard extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(top: 50,bottom:50, left: 30),
                         child: ElevatedButton(
-                          child: Text('Transaction History'),
-                          onPressed: (){}, 
+                          child: Text('Transaction History',style:TextStyle(fontFamily: 'Poppins', color: Color(0xFF141c48))),
+                          onPressed: (){
+                            
+                          }, 
                           style: ButtonStyle(
                            backgroundColor: MaterialStateProperty.all(Color (0xFFf8bdd0)),
                            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),),
@@ -123,8 +133,10 @@ class Dashboard extends StatelessWidget {
                        Padding(
                         padding: EdgeInsets.only(left: 30),
                         child: ElevatedButton(
-                          child: Text('Transfer Money'),
-                          onPressed: (){}, 
+                          child: Text('Transfer Money',style:TextStyle(fontFamily: 'Poppins', color: Color(0xFF141c48))),
+                          onPressed: (){
+
+                          }, 
                           style: ButtonStyle(
                            backgroundColor: MaterialStateProperty.all(Color (0xFFf8bdd0)),
                            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),),
@@ -137,8 +149,10 @@ class Dashboard extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(left: 30),
                         child: ElevatedButton(
-                          child: Text('Investments'),
-                          onPressed: (){}, 
+                          child: Text('Investments',style:TextStyle(fontFamily: 'Poppins', color: Color(0xFF141c48))),
+                          onPressed: (){
+
+                          }, 
                           style: ButtonStyle(
                            backgroundColor: MaterialStateProperty.all(Color (0xFFf8bdd0)),
                            shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),),
