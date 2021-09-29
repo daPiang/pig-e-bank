@@ -16,4 +16,6 @@ class BankTheme {
   static const Color orange = Color(0xFFF5654e);
 
   static const Color navyBlue = Color(0xFF010a43);
+
+  static const Color salmon = Color(0xFFfdd7e4);
 }
