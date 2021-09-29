@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pig_e_bank/palette.dart';
-import 'package:pig_e_bank/splash_screen.dart';
+//import 'package:pig_e_bank/splash_screen.dart';
+import 'package:pig_e_bank/dashboard.dart';
 import 'package:flutter/services.dart';
 
 void main() {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: BankTheme.black, 
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SplashScreen(),
+      home: Dashboard(),
     );
   }
 }
