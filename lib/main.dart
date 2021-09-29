@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:pig_e_bank/login.dart';
-import 'package:pig_e_bank/dashboard.dart';
+import 'package:pig_e_bank/palette.dart';
+import 'package:pig_e_bank/splash_screen.dart';
+import 'package:flutter/services.dart';
 
 void main() {
-  runApp(const MyApp());
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        //home: const Login(),
-        initialRoute: '',
-        routes: {
-          '/': (context) => const Login(),
-          '/second': (context) => const Dashboard(),
-        });
+      debugShowCheckedModeBanner: false,
+      title: 'Pig-E Bank',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: BankTheme.black, 
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: SplashScreen(),
+    );
   }
 }
+
