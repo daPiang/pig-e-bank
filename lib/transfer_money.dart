@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pig_e_bank/dashboard.dart';
 import 'account.dart';
 import 'confirm_transfer.dart';
 import 'palette.dart';
@@ -216,8 +217,8 @@ class _TransferMoneyState extends State<TransferMoney> {
                       ),
                       onPressed: () {
                         //print(Account.bal);
-                        //Account.bal =
-                        //Account.bal - double.parse(amountController.text);
+                        Account.bal =
+                            Account.bal - double.parse(amountController.text);
                         //print(Account.bal);
                         validateFields();
                         if (_isValidAmnt == true && _isValidAcc == true) {
