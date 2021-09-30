@@ -54,4 +54,5 @@ flutter:
           weight: 700
         - asset: assets/fonts/Poppins-ExtraBold.ttf
           weight: 800
+        - asset: assets/fonts/Montserrat-Regular.otf
  

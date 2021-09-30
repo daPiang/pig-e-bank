@@ -19,15 +19,15 @@ class Dashboard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Padding(
-                      padding:  EdgeInsets.symmetric(horizontal: 15),
+                      padding:  EdgeInsets.symmetric(horizontal: 25),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Icon(Icons.menu,
                               color: Colors.lightBlue[100], size: 30.0),
-                          Icon(Icons.search,
+                          Text('PIG-E Bank', style: TextStyle(color: Color(0xFFf8bdd0), fontFamily: 'Montserrat', fontWeight: FontWeight.w800),),
+                          Icon(Icons.notifications,
                               color: Colors.lightBlue[100], size: 25.0),
-                          
                       ],
                       ),
                     ),
@@ -55,7 +55,7 @@ class Dashboard extends StatelessWidget {
                                 fontSize: 22.0,
                                 fontFamily: 'Poppins',
                                 color: Color (0xFFf8bdd0),
-                                fontWeight: FontWeight.w800,
+                                fontWeight: FontWeight.w700,
                                       ),
                                     ),
                             ),
@@ -98,48 +98,57 @@ class Dashboard extends StatelessWidget {
                   children: [
                     Row(children: [
                       Padding(
-                        padding: EdgeInsets.only(top: 40,bottom:40, left: 30),
+                        padding: EdgeInsets.only(top: 35,bottom: 20, left: 30),
                         child: ElevatedButton(
-                          child: Text('Balance Inquiry', textAlign: TextAlign.center,style:TextStyle(fontFamily: 'Poppins', color: Color(0xFF141c48))),
+                          child:Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding:  EdgeInsets.only(left: 10, top: 5),
+                                    child: Text('Balance',style:TextStyle(fontFamily: 'Poppins', color: Colors.grey[800])),
+                                  ),
+                                  Padding(
+                                    padding:  EdgeInsets.only(left: 205, top: 5),
+                                    child: Icon(Icons.navigate_next_rounded, color: Colors.grey[800],size: 30,),
+                                  ),
+                                  
+                                ],
+                              ),
+                              Divider(height:15, thickness: 0.8,color:  Colors.grey[800], indent: 15,endIndent: 15,),
+                              Padding(
+                                padding:  EdgeInsets.only(left:110,top: 28),
+                                child: Text('PHP 1234.56',style:TextStyle(fontFamily: 'Poppins', color: Colors.grey[800], fontSize: 31), textAlign: TextAlign.right, ),
+                              ),
+                            ],
+                          ),
                           onPressed: (){
 
                           }, 
                           style: ButtonStyle(
                            backgroundColor: MaterialStateProperty.all(Color (0xFFf8bdd0)),
-                           shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),),
-                          padding: MaterialStateProperty.all(EdgeInsets.all(25)),
+                           shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),),
+                          padding: MaterialStateProperty.all(EdgeInsets.all(10)),
                           elevation: MaterialStateProperty.all(2),
-                          fixedSize: MaterialStateProperty.all(Size(150, 150))
-                         ),),
+                          fixedSize: MaterialStateProperty.all(Size(330, 150))
+                         ),
+                         
+                         ),
                       ),
-                      
-                      Padding(
-                        padding: EdgeInsets.only(top: 40,bottom:40, left: 30),
-                        child: ElevatedButton(
-                          child: Text('Transaction History',textAlign: TextAlign.center,style:TextStyle(fontFamily: 'Poppins', color: Color(0xFF141c48))),
-                          onPressed: (){
-                            
-                          }, 
-                          style: ButtonStyle(
-                           backgroundColor: MaterialStateProperty.all(Color (0xFFf8bdd0)),
-                           shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),),
-                          padding: MaterialStateProperty.all(EdgeInsets.all(25)),
-                          elevation: MaterialStateProperty.all(2),
-                          fixedSize: MaterialStateProperty.all(Size(150, 150))
-                         ),),
-                      ),
+                      //FloatingActionButton.extended(onPressed: (){}, label: Text('Help', style: TextStyle(fontFamily: 'Poppins')), icon: Icon(Icons.help_outline_outlined), backgroundColor: Colors.yellow[800],),
                       ],),
+                    Container(width:double.infinity, padding: EdgeInsets.only(left:40), child: Text('Transactions' ,style:TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w600, color: Colors.grey[800], fontSize: 18))),
                     Row(children: [
                        Padding(
-                        padding: EdgeInsets.only(left: 30),
+                        padding: EdgeInsets.only(left: 30,top:20),
                         child: ElevatedButton(
-                          child: Text('Transfer Money',textAlign: TextAlign.center,style:TextStyle(fontFamily: 'Poppins', color: Color(0xFF141c48))),
+                          child: Text('Transfer Money',textAlign: TextAlign.center,style:TextStyle(fontFamily: 'Poppins', color: Colors.grey[800])),
                           onPressed: (){
 
                           }, 
                           style: ButtonStyle(
                            backgroundColor: MaterialStateProperty.all(Color (0xFFf8bdd0)),
-                           shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                           shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
                           padding: MaterialStateProperty.all(EdgeInsets.all(25)),
                           elevation: MaterialStateProperty.all(2),
                           fixedSize: MaterialStateProperty.all(Size(150, 150))
@@ -147,15 +156,15 @@ class Dashboard extends StatelessWidget {
                       ),
                       
                       Padding(
-                        padding: EdgeInsets.only(left: 30),
+                        padding: EdgeInsets.only(left: 30,top:20),
                         child: ElevatedButton(
-                          child: Text('Investments',textAlign: TextAlign.center,style:TextStyle(fontFamily: 'Poppins', color: Color(0xFF141c48))),
+                          child: Text('Transaction History',textAlign: TextAlign.center,style:TextStyle(fontFamily: 'Poppins', color: Colors.grey[800])),
                           onPressed: (){
 
                           }, 
                           style: ButtonStyle(
                            backgroundColor: MaterialStateProperty.all(Color (0xFFf8bdd0)),
-                           shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),),
+                           shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),),
                           padding: MaterialStateProperty.all(EdgeInsets.all(25)),
                           elevation: MaterialStateProperty.all(2),
                           fixedSize: MaterialStateProperty.all(Size(150, 150))
@@ -164,7 +173,7 @@ class Dashboard extends StatelessWidget {
                     ],
                     ),
                     Padding(
-                      padding:  EdgeInsets.only(top:35, left: 230),
+                      padding:  EdgeInsets.only(top:20, left: 220),
                       child: FloatingActionButton.extended(onPressed: (){}, label: Text('Help', style: TextStyle(fontFamily: 'Poppins')), icon: Icon(Icons.help_outline_outlined), backgroundColor: Colors.yellow[800],),
                     )
                   ],
