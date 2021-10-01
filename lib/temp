@@ -222,3 +222,25 @@ Container(
                 ),
               ),
             ),
+
+
+
+Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 25),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Icon(Icons.menu,
+                              color: Colors.lightBlue[100], size: 30.0),
+                          Text(
+                            'PIG-E Bank',
+                            style: TextStyle(
+                                color: Color(0xFFf8bdd0),
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.w800),
+                          ),
+                          Icon(Icons.notifications,
+                              color: Colors.lightBlue[100], size: 25.0),
+                        ],
+                      ),
+                    ),

@@ -12,6 +12,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _userController = TextEditingController();
   final _passController = TextEditingController();
+  bool _isHidden = true;
 
   final snackBar = const SnackBar(content: Text('Invalid Login'));
 
@@ -29,6 +30,12 @@ class _LoginState extends State<Login> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
+  }
+
+  void _togglePass() {
+    setState(() {
+      _isHidden = !_isHidden;
+    });
   }
 
   final InputDecoration txFldBase = const InputDecoration(
@@ -56,6 +63,13 @@ class _LoginState extends State<Login> {
                 style: const TextStyle(color: Colors.white),
                 controller: _userController,
                 decoration: txFldBase.copyWith(
+                    errorText: _userController.text == 'admin'
+                        ? null
+                        : 'Invalid Username',
+                    focusedErrorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.red)),
+                    errorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.red)),
                     labelText: 'Username',
                     suffixIcon: const Icon(Icons.person, color: Colors.white)),
               ),
@@ -63,19 +77,34 @@ class _LoginState extends State<Login> {
                 height: 10,
               ),
               TextField(
-                style: const TextStyle(color: Colors.white),
-                controller: _passController,
-                obscureText: true,
-                decoration: txFldBase.copyWith(
-                    labelText: 'Password',
-                    suffixIcon:
-                        const Icon(Icons.lock_outline, color: Colors.white)),
-              ),
+                  style: const TextStyle(color: Colors.white),
+                  controller: _passController,
+                  obscureText: _isHidden,
+                  decoration: txFldBase.copyWith(
+                      errorText: _passController.text == 'password'
+                          ? null
+                          : 'Invalid Password',
+                      focusedErrorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red)),
+                      errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red)),
+                      labelText: 'Password',
+                      suffixIcon: InkWell(
+                        onTap: _togglePass,
+                        child: Icon(
+                          _isHidden ? Icons.visibility_off : Icons.visibility,
+                          color: Colors.white,
+                        ),
+                      ))),
+              const SizedBox(height: 20),
               ElevatedButton(
                   style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(BankTheme.salmon),
-                  ),
+                      backgroundColor:
+                          MaterialStateProperty.all(BankTheme.salmon),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ))),
                   child: const Text(
                     'Login',
                     style: TextStyle(color: Colors.black),

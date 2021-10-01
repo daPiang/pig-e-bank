@@ -59,7 +59,7 @@ class AuthenticationPage extends StatelessWidget {
                         child: Text(
                           "Sign in",
                           style: TextStyle(
-                            color: Colors.blueGrey,
+                            color: Colors.black,
                             fontWeight: FontWeight.bold,
                             fontSize: 18.0,
                           ),
