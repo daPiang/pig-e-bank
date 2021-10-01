@@ -22,6 +22,8 @@ class _TransferMoneyState extends State<TransferMoney> {
   final greatSnack =
       const SnackBar(content: Text('Amount greater than current balance'));
 
+  String dropdownValue = 'Pig-E Bank';
+
   @override
   void dispose() {
     amountController.dispose();
@@ -49,38 +51,19 @@ class _TransferMoneyState extends State<TransferMoney> {
     } else if (double.parse(amountController.text) < 200) {
       ScaffoldMessenger.of(context).showSnackBar(lessSnack);
     } else {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const ConfirmTransfer()));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ConfirmTransfer(
+                    drpVal: dropdownValue,
+                    accNum: accountController.text,
+                    transMsg: msgController.text,
+                  )));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle cardTextStyle =
-        Theme.of(context).textTheme.subtitle1!.copyWith(
-              color: Colors.black,
-              fontWeight: FontWeight.w600,
-            );
-
-    final BoxDecoration decoration = BoxDecoration(
-      gradient: const LinearGradient(
-        colors: <Color>[
-          BankTheme.orange,
-          Color(0xFFFEC18A),
-        ],
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-      ),
-      borderRadius: const BorderRadius.only(
-          //topLeft: Radius.circular(30.0),
-          //topRight: Radius.circular(30.0),
-          ),
-      border: Border.all(
-        color: BankTheme.black,
-        width: 4.0,
-      ),
-    );
-
     const InputDecoration txFldBase = InputDecoration(
       floatingLabelBehavior: FloatingLabelBehavior.always,
       counterStyle: TextStyle(color: Colors.white),
@@ -99,133 +82,152 @@ class _TransferMoneyState extends State<TransferMoney> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF1b287d),
         title: const Text('Transfer Money'),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         reverse: true,
         child: Column(
           children: <Widget>[
             Container(
-              height: 200.0,
-              decoration: decoration.copyWith(
-                //borderRadius: BorderRadius.circular(30),
-                gradient: const LinearGradient(
-                  colors: <Color>[
-                    Color(0xFFFCA7E2),
-                    Color(0xFFFC9FD2),
-                    Color(0xFFFCD88D),
-                  ],
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              'Savings Account',
-                              style: cardTextStyle.copyWith(
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            Text(
-                              '003 821 934 275',
-                              style: cardTextStyle.copyWith(
-                                fontSize: 16.0,
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+              width: MediaQuery.of(context).size.width,
+              color: const Color(0xFF1b287d),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 37,
+                      child: Text(
+                        'PHP ' + Account.bal.toStringAsFixed(2),
+                        style:
+                            const TextStyle(fontSize: 30, color: Colors.white),
+                      ),
                     ),
-                    Row(
-                      children: <Widget>[
-                        const SizedBox(
-                          height: 40.0,
-                          //child: Image.network(
-                          //'https://www.montyhalls.co.uk/wp-content/uploads/2014/11/logo-visa.png',
-                          //),
-                        ),
-                        const SizedBox(width: 190),
-                        Text(
-                          'PHP ' + Account.bal.toStringAsFixed(2),
-                          style: cardTextStyle.copyWith(
-                              fontSize: 22.5, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+                    const Text('BALANCE',
+                        style: TextStyle(fontSize: 12, color: Colors.white)),
+                    const SizedBox(height: 15)
+                  ]),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  TextField(
-                    //keyboardType: TextInputType.number,
-                    //inputFormatters: [CustomTextInputFormatter()],
-                    style: const TextStyle(color: Colors.white),
-                    controller: amountController,
-                    decoration: txFldBase.copyWith(
+              child: Column(children: [
+                Row(children: [
+                  const Padding(
+                    padding: EdgeInsets.only(top: 15),
+                    child: Text('PHP',
+                        style: TextStyle(
+                          color: Colors.white,
+                        )),
+                  ),
+                  const SizedBox(width: 10),
+                  SizedBox(
+                    width: 202,
+                    child: TextField(
+                      //keyboardType: TextInputType.number,
+                      //inputFormatters: [CustomTextInputFormatter()],
+                      style: const TextStyle(color: Colors.white),
+                      controller: amountController,
+                      decoration: txFldBase.copyWith(
+                        isDense: true,
                         labelText: 'Amount',
                         hintText: '0.00',
                         errorText: _isValidAmnt ? 'Enter a valid amount' : null,
-                        suffixText: ('PHP '),
-                        suffixStyle: const TextStyle(color: Colors.white)),
+                      ),
+                    ),
                   ),
-                  TextField(
-                    //keyboardType: TextInputType.number,
-                    //inputFormatters: [AccountSep()],
-                    maxLength: 12,
-                    maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                    style: const TextStyle(color: Colors.white),
-                    controller: accountController,
-                    decoration: txFldBase.copyWith(
-                        labelText: 'Account Number',
-                        hintText: '123 456 789 000',
-                        errorText: _isValidAcc
-                            ? 'Enter a 12-digit acocunt number'
-                            : null),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: Row(
+                      children: [
+                        const SizedBox(
+                          width: 30,
+                        ),
+                        DropdownButton<String>(
+                          dropdownColor: Colors.grey[800],
+                          //isExpanded: true,
+                          value: dropdownValue,
+                          icon: const Icon(
+                            Icons.arrow_drop_down,
+                            color: Colors.white,
+                          ),
+                          iconSize: 24,
+                          elevation: 16,
+                          style: const TextStyle(color: Colors.white),
+                          underline: Container(
+                            height: 1,
+                            color: Colors.white,
+                          ),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              dropdownValue = newValue!;
+                            });
+                          },
+                          items: <String>[
+                            'Pig-E Bank',
+                            'GCash',
+                            'Paymaya',
+                            'BDO',
+                            'RCBC',
+                            'Landbank',
+                            'BPI',
+                            'Coins.ph'
+                          ].map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ],
+                    ),
                   ),
-                  TextField(
-                    maxLength: 60,
-                    maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                    style: const TextStyle(color: Colors.white),
-                    controller: msgController,
-                    decoration: txFldBase.copyWith(labelText: 'Message'),
+                ]),
+                TextField(
+                  //keyboardType: TextInputType.number,
+                  //inputFormatters: [AccountSep()],
+                  maxLength: 12,
+                  maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                  style: const TextStyle(color: Colors.white),
+                  controller: accountController,
+                  decoration: txFldBase.copyWith(
+                      isDense: true,
+                      labelText: 'Account Number',
+                      hintText: '123 456 789 000',
+                      errorText: _isValidAcc
+                          ? 'Enter a 12-digit acocunt number'
+                          : null),
+                ),
+                TextField(
+                  maxLength: 60,
+                  maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                  style: const TextStyle(color: Colors.white),
+                  controller: msgController,
+                  decoration: txFldBase.copyWith(
+                    labelText: 'Message',
+                    isDense: true,
                   ),
-                  ElevatedButton(
-                      style: ButtonStyle(
+                ),
+                ElevatedButton(
+                    style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(BankTheme.salmon),
-                      ),
-                      child: const Text(
-                        'Confirm',
-                        style: TextStyle(color: BankTheme.black),
-                      ),
-                      onPressed: () {
-                        //print(Account.bal);
-                        //Account.bal =
-                        //Account.bal - double.parse(amountController.text);
-                        //print(Account.bal);
-                        validateFields();
-                        if (_isValidAmnt == true && _isValidAcc == true) {
-                          validateAmnt();
-                        } else {}
-                      }),
-                ],
-              ),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                        ))),
+                    child: const Text(
+                      'Confirm',
+                      style: TextStyle(color: BankTheme.black),
+                    ),
+                    onPressed: () {
+                      Account.bal =
+                          Account.bal - double.parse(amountController.text);
+                      validateFields();
+                      if (_isValidAmnt == true && _isValidAcc == true) {
+                        validateAmnt();
+                      } else {}
+                    }),
+              ]),
             ),
           ],
         ),
