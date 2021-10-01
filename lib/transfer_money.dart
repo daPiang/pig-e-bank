@@ -51,6 +51,7 @@ class _TransferMoneyState extends State<TransferMoney> {
     } else if (double.parse(amountController.text) < 200) {
       ScaffoldMessenger.of(context).showSnackBar(lessSnack);
     } else {
+      Account.bal = Account.bal - double.parse(amountController.text);
       Navigator.push(
           context,
           MaterialPageRoute(
@@ -122,8 +123,6 @@ class _TransferMoneyState extends State<TransferMoney> {
                   SizedBox(
                     width: 202,
                     child: TextField(
-                      //keyboardType: TextInputType.number,
-                      //inputFormatters: [CustomTextInputFormatter()],
                       style: const TextStyle(color: Colors.white),
                       controller: amountController,
                       decoration: txFldBase.copyWith(
@@ -182,8 +181,6 @@ class _TransferMoneyState extends State<TransferMoney> {
                   ),
                 ]),
                 TextField(
-                  //keyboardType: TextInputType.number,
-                  //inputFormatters: [AccountSep()],
                   maxLength: 12,
                   maxLengthEnforcement: MaxLengthEnforcement.enforced,
                   style: const TextStyle(color: Colors.white),
@@ -220,8 +217,6 @@ class _TransferMoneyState extends State<TransferMoney> {
                       style: TextStyle(color: BankTheme.black),
                     ),
                     onPressed: () {
-                      Account.bal =
-                          Account.bal - double.parse(amountController.text);
                       validateFields();
                       if (_isValidAmnt == true && _isValidAcc == true) {
                         validateAmnt();
