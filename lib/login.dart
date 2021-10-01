@@ -63,13 +63,6 @@ class _LoginState extends State<Login> {
                 style: const TextStyle(color: Colors.white),
                 controller: _userController,
                 decoration: txFldBase.copyWith(
-                    errorText: _userController.text == 'admin'
-                        ? null
-                        : 'Invalid Username',
-                    focusedErrorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red)),
-                    errorBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red)),
                     labelText: 'Username',
                     suffixIcon: const Icon(Icons.person, color: Colors.white)),
               ),
@@ -81,13 +74,6 @@ class _LoginState extends State<Login> {
                   controller: _passController,
                   obscureText: _isHidden,
                   decoration: txFldBase.copyWith(
-                      errorText: _passController.text == 'password'
-                          ? null
-                          : 'Invalid Password',
-                      focusedErrorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red)),
-                      errorBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.red)),
                       labelText: 'Password',
                       suffixIcon: InkWell(
                         onTap: _togglePass,
