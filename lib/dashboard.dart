@@ -12,7 +12,7 @@ class Dashboard extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
-        //reverse: false,
+        reverse: true,
         child: SafeArea(
           child: Column(
             children: <Widget>[
