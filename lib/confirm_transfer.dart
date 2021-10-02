@@ -18,26 +18,46 @@ class ConfirmTransfer extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(50.0),
-        child: Column(children: [
-          Text(
-            Account.bal.toStringAsFixed(2) + ' ' + drpVal,
-            style: TextStyle(color: Colors.white),
-          ),
-          Text(
-            transMsg + ' ' + accNum,
-            style: TextStyle(color: Colors.white),
-          ),
-          ElevatedButton(
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Dashboard()));
-              },
-              child: Text('Test'))
-        ]),
-      ),
-    );
+        resizeToAvoidBottomInset: false,
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/images/successful.png',
+              height: 250.0,
+              width: 300.0,
+            ),
+              Text(
+                "Transfer Successful",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30.0,
+                )
+              ),
+            Padding(
+              padding: const EdgeInsets.all(50.0),
+              child: Column(children: [
+                Text(
+                  Account.bal.toStringAsFixed(2) + ' ' + drpVal,
+                  style: TextStyle(color: Colors.white),
+                ),
+                Text(
+                  transMsg + ' ' + accNum,
+                  style: TextStyle(color: Colors.white),
+                ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Dashboard()));
+                    },
+                    child: Text('Done'))
+              ]),
+            ),
+          ],
+        ),
+      );
     //throw UnimplementedError();
   }
 }
