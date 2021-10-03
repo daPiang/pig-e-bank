@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: TransactionHistory(),
+      home: TransferMoney(),
     );
   }
 }
