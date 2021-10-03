@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pig_e_bank/authentication_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -14,16 +14,18 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 5),
+        const Duration(seconds: 5),
         () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => AuthenticationPage())));
+            context,
+            MaterialPageRoute(
+                builder: (context) => const AuthenticationPage())));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomRight,
@@ -42,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 500.0,
               width: 900.0,
             ),
-            Text(
+            const Text(
               "Your Lifetime Savings Bank",
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -51,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 fontSize: 20.0,
               ),
             ),
-            CircularProgressIndicator(),
+            const CircularProgressIndicator(),
           ],
         ),
       ),

@@ -10,26 +10,43 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final userController = TextEditingController();
-  final passController = TextEditingController();
+  final _userController = TextEditingController();
+  final _passController = TextEditingController();
+  bool _isHidden = true;
+
   final snackBar = const SnackBar(content: Text('Invalid Login'));
-  bool _isAdmin = false;
 
   @override
   void dispose() {
-    userController.dispose();
-    passController.dispose();
+    _userController.dispose();
+    _passController.dispose();
     super.dispose();
   }
 
   void authLogin() {
-    if (userController.text == "admin" && passController.text == "password") {
-      _isAdmin = true;
+    if (_userController.text == "admin" && _passController.text == "password") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const Dashboard()));
     } else {
-      _isAdmin = false;
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
   }
+
+  void _togglePass() {
+    setState(() {
+      _isHidden = !_isHidden;
+    });
+  }
+
+  final InputDecoration txFldBase = const InputDecoration(
+    enabledBorder:
+        OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+    focusedBorder:
+        OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+    //labelText: 'Username',
+    labelStyle: TextStyle(color: Colors.white),
+    //suffixIcon: Icon(Icons.person, color: Colors.white)
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -39,55 +56,47 @@ class _LoginState extends State<Login> {
         child: Padding(
           padding: const EdgeInsets.all(25),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Image.asset('assets/images/pigeBank.png'),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10),
-                child: TextField(
-                  style: const TextStyle(color: BankTheme.salmon),
-                  controller: userController,
-                  decoration: const InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: BankTheme.salmon)),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: BankTheme.salmon)),
-                      labelText: 'Username',
-                      labelStyle: TextStyle(color: BankTheme.salmon),
-                      suffixIcon: Icon(Icons.person, color: BankTheme.salmon)),
-                ),
+              TextField(
+                style: const TextStyle(color: Colors.white),
+                controller: _userController,
+                decoration: txFldBase.copyWith(
+                    labelText: 'Username',
+                    suffixIcon: const Icon(Icons.person, color: Colors.white)),
+              ),
+              const SizedBox(
+                height: 10,
               ),
               TextField(
-                style: const TextStyle(color: BankTheme.salmon),
-                controller: passController,
-                obscureText: true,
-                decoration: const InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: BankTheme.salmon)),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: BankTheme.salmon)),
-                    labelText: 'Password',
-                    labelStyle: TextStyle(color: BankTheme.salmon),
-                    suffixIcon: Icon(Icons.lock_outline_rounded,
-                        color: BankTheme.salmon)),
-              ),
+                  style: const TextStyle(color: Colors.white),
+                  controller: _passController,
+                  obscureText: _isHidden,
+                  decoration: txFldBase.copyWith(
+                      labelText: 'Password',
+                      suffixIcon: InkWell(
+                        onTap: _togglePass,
+                        child: Icon(
+                          _isHidden ? Icons.visibility_off : Icons.visibility,
+                          color: Colors.white,
+                        ),
+                      ))),
+              const SizedBox(height: 20),
               ElevatedButton(
                   style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(BankTheme.salmon),
-                  ),
+                      backgroundColor:
+                          MaterialStateProperty.all(BankTheme.salmon),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                      ))),
                   child: const Text(
                     'Login',
                     style: TextStyle(color: Colors.black),
                   ),
                   onPressed: () {
                     authLogin();
-                    if (_isAdmin == true) {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Dashboard()));
-                    }
                   }),
             ],
           ),

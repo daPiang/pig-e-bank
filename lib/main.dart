@@ -3,15 +3,17 @@ import 'package:pig_e_bank/palette.dart';
 //import 'package:pig_e_bank/splash_screen.dart';
 import 'package:pig_e_bank/dashboard.dart';
 import 'package:flutter/services.dart';
-//import 'package:pig_e_bank/transfer_money.dart';
+import 'package:pig_e_bank/transfer_money.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Colors.transparent));
-  runApp(MyApp());
+      const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: Dashboard(),
+      home: TransferMoney(),
     );
   }
 }
