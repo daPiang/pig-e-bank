@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pig_e_bank/dashboard.dart';
+import 'package:pig_e_bank/transaction_history.dart';
 import 'account.dart';
 
 class ConfirmTransfer extends StatelessWidget {
@@ -51,6 +52,12 @@ class ConfirmTransfer extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Dashboard()));
+
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //   builder: (context) => TransactionHistory(transMsg: transMsg,accNum: accNum, drpVal: drpVal,)
+                      //   ));
                     },
                     child: Text('Done'))
               ]),
