@@ -16,26 +16,25 @@ class ConfirmTransfer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+      resizeToAvoidBottomInset: false,
+      body: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          //crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset(
               'assets/images/successful.png',
               height: 250.0,
               width: 300.0,
             ),
-              Text(
-                "Transfer Successful",
+            Text("Transfer Successful",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 30.0,
-                )
-              ),
+                )),
             Padding(
               padding: const EdgeInsets.all(50.0),
               child: Column(children: [
@@ -57,7 +56,8 @@ class ConfirmTransfer extends StatelessWidget {
             ),
           ],
         ),
-      );
+      ]),
+    );
     //throw UnimplementedError();
   }
 }

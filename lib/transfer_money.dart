@@ -90,22 +90,35 @@ class _TransferMoneyState extends State<TransferMoney> {
         child: Column(
           children: <Widget>[
             Container(
+              decoration: const BoxDecoration(
+                borderRadius:
+                    BorderRadius.vertical(bottom: Radius.circular(20)),
+                color: Color(0xFF1b287d),
+              ),
               width: MediaQuery.of(context).size.width,
-              color: const Color(0xFF1b287d),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
                       height: 37,
-                      child: Text(
-                        'PHP ' + Account.bal.toStringAsFixed(2),
-                        style:
-                            const TextStyle(fontSize: 30, color: Colors.white),
-                      ),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              'PHP ',
+                              style:
+                                  TextStyle(fontSize: 20, color: Colors.white),
+                            ),
+                            Text(
+                              Account.bal.toStringAsFixed(2),
+                              style: const TextStyle(
+                                  fontSize: 30, color: Colors.white),
+                            )
+                          ]),
                     ),
-                    const Text('BALANCE',
+                    const Text('AVAILABLE BALANCE',
                         style: TextStyle(fontSize: 12, color: Colors.white)),
-                    const SizedBox(height: 15)
+                    const SizedBox(height: 12)
                   ]),
             ),
             Padding(
@@ -142,7 +155,6 @@ class _TransferMoneyState extends State<TransferMoney> {
                         ),
                         DropdownButton<String>(
                           dropdownColor: Colors.grey[800],
-                          //isExpanded: true,
                           value: dropdownValue,
                           icon: const Icon(
                             Icons.arrow_drop_down,

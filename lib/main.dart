@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: TransferMoney(),
+      home: const SplashScreen(),
     );
   }
 }

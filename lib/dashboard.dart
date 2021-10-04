@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pig_e_bank/account_details.dart';
+import 'package:pig_e_bank/help.dart';
+import 'package:pig_e_bank/history.dart';
 import 'package:pig_e_bank/transfer_money.dart';
 
 import 'account.dart';
@@ -157,7 +160,13 @@ class Dashboard extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const AccountDetails()));
+                            },
                             style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
                                     Color(0xFFf8bdd0)),
@@ -223,7 +232,12 @@ class Dashboard extends StatelessWidget {
                                 style: TextStyle(
                                     fontFamily: 'Poppins',
                                     color: Colors.grey[800])),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => History()));
+                            },
                             style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
                                     Color(0xFFf8bdd0)),
@@ -243,7 +257,12 @@ class Dashboard extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: 20, left: 220),
                       child: FloatingActionButton.extended(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Help()));
+                        },
                         label: Text('Help',
                             style: TextStyle(fontFamily: 'Poppins')),
                         icon: Icon(Icons.help_outline_outlined),
