@@ -258,9 +258,9 @@ class Dashboard extends StatelessWidget {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) => About()));
                         },
-                        label: Text('Help',
+                        label: Text('About',
                             style: TextStyle(fontFamily: 'Poppins')),
-                        icon: Icon(Icons.help_outline_outlined),
+                        icon: Icon(Icons.info_outline),
                         backgroundColor: Colors.yellow[800],
                       ),
                     )
