@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pig_e_bank/account_details.dart';
 import 'package:pig_e_bank/transaction_history.dart';
 import 'package:pig_e_bank/transfer_money.dart';
-
 import 'account.dart';
-//import 'package:pig_e_bank/login.dart';
+import 'about.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -164,13 +162,7 @@ class Dashboard extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const AccountDetails()));
-                            },
+                            onPressed: () {},
                             style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
                                     Color(0xFFf8bdd0)),
@@ -241,7 +233,7 @@ class Dashboard extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          const TransactionHistory()));
+                                          TransactionHistory()));
                             },
                             style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
@@ -262,7 +254,10 @@ class Dashboard extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: 20, left: 220),
                       child: FloatingActionButton.extended(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) => About()));
+                        },
                         label: Text('Help',
                             style: TextStyle(fontFamily: 'Poppins')),
                         icon: Icon(Icons.help_outline_outlined),
