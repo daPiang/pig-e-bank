@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pig_e_bank/account_details.dart';
-import 'package:pig_e_bank/help.dart';
-import 'package:pig_e_bank/history.dart';
+import 'package:pig_e_bank/transaction_history.dart';
 import 'package:pig_e_bank/transfer_money.dart';
 
 import 'account.dart';
@@ -26,13 +25,18 @@ class Dashboard extends StatelessWidget {
         leading: Builder(builder: (BuildContext context) {
           return IconButton(
             icon: Icon(Icons.menu),
-            onPressed: () {},
+            onPressed: () {
+              //menu or settings
+            },
           );
         }),
         actions: [
           Builder(builder: (BuildContext context) {
             return IconButton(
-                onPressed: () {}, icon: Icon(Icons.notifications));
+                onPressed: () {
+                  //notifications
+                },
+                icon: Icon(Icons.notifications));
           }),
         ],
       ),
@@ -236,7 +240,8 @@ class Dashboard extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => History()));
+                                      builder: (context) =>
+                                          const TransactionHistory()));
                             },
                             style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
@@ -257,12 +262,7 @@ class Dashboard extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: 20, left: 220),
                       child: FloatingActionButton.extended(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Help()));
-                        },
+                        onPressed: () {},
                         label: Text('Help',
                             style: TextStyle(fontFamily: 'Poppins')),
                         icon: Icon(Icons.help_outline_outlined),
