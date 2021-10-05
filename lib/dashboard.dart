@@ -232,7 +232,7 @@ class Dashboard extends StatelessWidget {
                                Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                builder: (context) => const TransactionHistory()));
+                                builder: (context) =>  TransactionHistory()));
                             },
                             style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
