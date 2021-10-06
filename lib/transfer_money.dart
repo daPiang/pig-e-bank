@@ -51,7 +51,7 @@ class _TransferMoneyState extends State<TransferMoney> {
     } else if (double.parse(amountController.text) < 200) {
       ScaffoldMessenger.of(context).showSnackBar(lessSnack);
     } else {
-      Account.bal = Account.bal - double.parse(amountController.text);
+      double processedBal = Account.bal - double.parse(amountController.text);
       Navigator.push(
           context,
           MaterialPageRoute(
@@ -59,6 +59,7 @@ class _TransferMoneyState extends State<TransferMoney> {
                     drpVal: dropdownValue,
                     accNum: accountController.text,
                     transMsg: msgController.text,
+                    balance: processedBal,
                   )));
     }
   }

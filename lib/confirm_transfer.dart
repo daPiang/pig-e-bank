@@ -6,11 +6,13 @@ class ConfirmTransfer extends StatelessWidget {
   final String drpVal;
   final String transMsg;
   final String accNum;
+  final double balance;
   const ConfirmTransfer(
       {Key? key,
       required this.drpVal,
       required this.accNum,
-      required this.transMsg})
+      required this.transMsg,
+      required this.balance})
       : super(key: key);
 
   @override
