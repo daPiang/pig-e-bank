@@ -22,6 +22,7 @@ class Balance extends StatelessWidget{
         context, MaterialPageRoute(builder: (context) => const Dashboard()));})),
       body: Column(
         children: [ 
+          Container(padding: EdgeInsets.symmetric(vertical:25),child: CircleAvatar(backgroundImage: AssetImage('assets/images/avatar.png'), backgroundColor: Colors.transparent, radius: 55,)),
           Container(width:double.infinity,child: Text('Account Number: ' + accNum, style: TextStyle(fontFamily: 'Poppins', fontSize: 15, fontWeight: FontWeight.w600), textAlign: TextAlign.left,), padding: EdgeInsets.all(20),),
           Container(width:double.infinity,child: Text('Account Name: ' + accName, style: TextStyle(fontFamily: 'Poppins', fontSize: 15, fontWeight: FontWeight.w600), textAlign: TextAlign.left,), padding: EdgeInsets.all(20),),
           Container(width:double.infinity,child: Text('Available Balance: ' + availBalance.toStringAsFixed(2), style: TextStyle(fontFamily: 'Poppins', fontSize: 15, fontWeight: FontWeight.w600), ),padding: EdgeInsets.all(20)),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pig_e_bank/confirm_transfer.dart';
+import 'package:pig_e_bank/dashboard.dart';
 import 'package:pig_e_bank/palette.dart';
 import 'package:pig_e_bank/balance.dart';
 //import 'package:pig_e_bank/dashboard.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: const Balance(),
+      home: const Dashboard(),
     );
   }
 }

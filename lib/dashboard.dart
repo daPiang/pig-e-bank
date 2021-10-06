@@ -9,202 +9,96 @@ class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-   
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          'PIG-E Bank',
+          'Pig-E Bank',
           style: TextStyle(
               color: Color(0xFFf8bdd0),
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.w800),
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w600,
+              fontSize: 18),
         ),
-        leading: Builder(builder: (BuildContext context) {
-          return IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: () {
-              //menu or settings
-            },
-          );
-        }),
-        actions: [
-          Builder(builder: (BuildContext context) {
-            return IconButton(
-                onPressed: () {
-                  //notifications
-                },
-                icon: Icon(Icons.notifications));
-          }),
-        ],
       ),
-      body: SafeArea(
+      body: Container(
         child: Column(
           children: <Widget>[
             Container(
-              height: 80,
-              width: width,
-              child: Column(
-                children: <Widget>[
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Positioned(
-                        top: 120,
-                        child: CircleAvatar(
-                          radius: 35.0,
-                          backgroundImage:
-                              AssetImage('assets/images/avatar.png'),
-                          backgroundColor: Colors.transparent,
-                        ),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            padding: EdgeInsets.only(right: 60),
-                            child: Text(
-                              Account.accName,
-                              textAlign: TextAlign.start,
-                              style: TextStyle(
-                                fontSize: 22.0,
-                                fontFamily: 'Poppins',
-                                color: Color(0xFFf8bdd0),
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(right: 60),
-                            child: Text(
-                              Account.accNum,
-                              textAlign: TextAlign.start,
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(right: 60),
-                            child: Text(
-                              Account.accType,
-                              textAlign: TextAlign.start,
-                              style: TextStyle(
-                                fontSize: 16.0,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
+              height: 157,
+              width: double.infinity,
+              child: Row(
+                children:[
+                  Padding(
+                    padding: const EdgeInsets.only(left:50, bottom: 40),
+                    child: CircleAvatar(
+                      radius: 45.0,
+                      backgroundImage:AssetImage('assets/images/avatar.png'),backgroundColor: Colors.transparent,
+                    ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(left:20, top:20),
+                    child: Column(
+                      children: [
+                        Text(Account.accName, style: TextStyle(fontFamily: 'Poppins', fontSize: 20, color: Color(0xFFf8bdd0), fontWeight: FontWeight.w600)),
+                        Text(Account.accNum, style: TextStyle(fontFamily: 'Poppins', fontSize: 14, color: Colors.white)),
+                        Text(Account.accType, style: TextStyle(fontFamily: 'Poppins', fontSize: 14, color: Colors.white))
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 10),
-              child: Container(
-                height: 500,
+            Container(
+                height: 444,
                 width: 390,
                 child: Column(
                   children: [
+                    Container(padding: EdgeInsets.only(left:40, top:30),width: double.infinity, child: Text('Transactions', style: TextStyle(fontFamily: 'Poppins', fontWeight: FontWeight.w600, fontSize: 18),textAlign: TextAlign.left,)),
                     Row(
                       children: [
-                        Padding(
-                          padding:
-                              EdgeInsets.only(top: 35, bottom: 20, left: 30),
-                          child: ElevatedButton(
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.only(left: 10, top: 5),
-                                      child: Text('Balance',
-                                          style: TextStyle(
-                                              fontFamily: 'Poppins',
-                                              color: Colors.grey[800])),
-                                    ),
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.only(left: 205, top: 5),
-                                      child: Icon(
-                                        Icons.navigate_next_rounded,
-                                        color: Colors.grey[800],
-                                        size: 30,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Divider(
-                                  height: 15,
-                                  thickness: 0.8,
-                                  color: Colors.grey[800],
-                                  indent: 15,
-                                  endIndent: 15,
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 90, top: 28),
-                                  child: Text(
-                                    'PHP ' + Account.bal.toStringAsFixed(2),
-                                    style: TextStyle(
-                                        fontFamily: 'Poppins',
-                                        color: Colors.grey[800],
-                                        fontSize: 31),
-                                    textAlign: TextAlign.right,
-                                  ),
-                                ),
-                              ],
-                            ),
+                        Padding(padding:EdgeInsets.only(top: 20, left: 40),
+                          child: IconButton(icon: const Icon(Icons.account_balance_rounded),//balance
                             onPressed: () {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const Balance()));
+                                context,
+                                  MaterialPageRoute(builder: (context) =>
+                                    const Balance()));
                             },
-                            style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    Color(0xFFf8bdd0)),
-                                shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
-                                ),
-                                padding: MaterialStateProperty.all(
-                                    EdgeInsets.all(10)),
-                                elevation: MaterialStateProperty.all(2),
-                                fixedSize:
-                                    MaterialStateProperty.all(Size(330, 150))),
+                            color: Colors.pinkAccent[100], iconSize: 45,
+                          ),
+                        ),
+                        Padding(padding:EdgeInsets.only(top: 20, left: 60),
+                          child: IconButton(icon: const Icon(Icons.health_and_safety_rounded),//donate
+                            onPressed: () {
+                              //SNACKBAR
+                            },
+                            color: Colors.pinkAccent[100], iconSize: 45,
+                          ),
+                        ),
+                        Padding(padding:EdgeInsets.only(top: 20, left: 60),
+                          child: IconButton(icon: const Icon(Icons.payment_rounded),//pay bills
+                            onPressed: () {
+                              //SNACKBAR
+                            },
+                            color: Colors.pinkAccent[100], iconSize: 45,
                           ),
                         ),
                       ],
                     ),
-                    Container(
-                        width: double.infinity,
-                        padding: EdgeInsets.only(left: 40),
-                        child: Text('Transactions',
-                            style: TextStyle(
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w600,
-                                color: Colors.grey[800],
-                                fontSize: 18))),
+                    
+                    Row(children: [
+                      Padding(padding:EdgeInsets.only(left: 43),child: Text('Balance', style: TextStyle(fontFamily: 'Poppins', fontSize: 14, fontWeight: FontWeight.w500)),),
+                      Padding(padding:EdgeInsets.only(left: 65),child: Text('Donate', style: TextStyle(fontFamily: 'Poppins', fontSize: 14, fontWeight: FontWeight.w500))),
+                      Padding(padding:EdgeInsets.only(left: 65),child: Text('Pay Bills', style: TextStyle(fontFamily: 'Poppins', fontSize: 14, fontWeight: FontWeight.w500))),
+                    ],),
+                    
                     Row(
                       children: [
                         Padding(
-                          padding: EdgeInsets.only(left: 30, top: 20),
-                          child: ElevatedButton(
-                            child: Text('Transfer Money',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.grey[800])),
+                          padding: EdgeInsets.only(left: 40, top: 25),
+                          child: IconButton(icon: const Icon(Icons.how_to_vote_rounded),//transfer money
                             onPressed: () {
                               Navigator.push(
                                   context,
@@ -212,73 +106,115 @@ class Dashboard extends StatelessWidget {
                                       builder: (context) =>
                                           const TransferMoney()));
                             },
-                            style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    Color(0xFFf8bdd0)),
-                                shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(20))),
-                                padding: MaterialStateProperty.all(
-                                    EdgeInsets.all(25)),
-                                elevation: MaterialStateProperty.all(2),
-                                fixedSize:
-                                    MaterialStateProperty.all(Size(150, 150))),
+                            color: Colors.pinkAccent[100], iconSize: 45,
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 30, top: 20),
-                          child: ElevatedButton(
-                            child: Text('Transaction History',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontFamily: 'Poppins',
-                                    color: Colors.grey[800])),
+                          padding: EdgeInsets.only(left: 60, top: 25),
+                          child: IconButton(icon: const Icon(Icons.history_edu_rounded),//transaction history
                             onPressed: () {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          TransactionHistory()));
+                                          const TransactionHistory()));
                             },
-                            style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    Color(0xFFf8bdd0)),
-                                shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20)),
-                                ),
-                                padding: MaterialStateProperty.all(
-                                    EdgeInsets.all(25)),
-                                elevation: MaterialStateProperty.all(2),
-                                fixedSize:
-                                    MaterialStateProperty.all(Size(150, 150))),
+                            color: Colors.pinkAccent[100], iconSize: 45,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 60, top: 25),
+                          child: IconButton(icon: const Icon(Icons.analytics_rounded),//invest
+                            onPressed: () {
+                              //SNACKBAR
+                            },
+                            color: Colors.pinkAccent[100], iconSize: 45,
                           ),
                         ),
                       ],
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 20, left: 220),
-                      child: FloatingActionButton.extended(
-                        onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => About()));
-                        },
-                        label: Text('About',
-                            style: TextStyle(fontFamily: 'Poppins')),
-                        icon: Icon(Icons.info_outline),
-                        backgroundColor: Colors.yellow[800],
-                      ),
-                    )
+
+                    Row(children: [
+                      Container(padding:EdgeInsets.only(left: 43),child: Text('Transfer\nMoney', style: TextStyle(fontFamily: 'Poppins', fontSize: 14, fontWeight: FontWeight.w500),textAlign: TextAlign.center)),
+                      Container(padding:EdgeInsets.only(left: 50),child: Text('Transaction\nHistory', style: TextStyle(fontFamily: 'Poppins', fontSize: 14, fontWeight: FontWeight.w500),textAlign: TextAlign.center,)),
+                      Padding(padding:EdgeInsets.only(left: 52),child: Text('Invest', style: TextStyle(fontFamily: 'Poppins', fontSize: 14, fontWeight: FontWeight.w500))),
+                    ],),
+
+                  Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 40, top: 25),
+                          child: IconButton(icon: const Icon(Icons.card_giftcard),//send gift
+                            onPressed: () {
+                              //SNACKBAR
+                            },
+                            color: Colors.pinkAccent[100], iconSize: 45,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 60, top: 25),
+                          child: IconButton(icon: const Icon(Icons.sell_rounded),//rewards
+                            onPressed: () {
+                             //SNACKBAR
+                            },
+                            color: Colors.pinkAccent[100], iconSize: 45,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 60, top: 25),
+                          child: IconButton(icon: const Icon(Icons.info_outline_rounded ),//about
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const About()));
+                            },
+                            color: Colors.pinkAccent[100], iconSize: 45,
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    Row(children: [
+                      Container(padding:EdgeInsets.only(left: 38),child: Text('Send Gift', style: TextStyle(fontFamily: 'Poppins', fontSize: 14, fontWeight: FontWeight.w500),textAlign: TextAlign.center)),
+                      Container(padding:EdgeInsets.only(left: 60),child: Text('Rewards', style: TextStyle(fontFamily: 'Poppins', fontSize: 14, fontWeight: FontWeight.w500),textAlign: TextAlign.center,)),
+                      Padding(padding:EdgeInsets.only(left:65),child: Text('About', style: TextStyle(fontFamily: 'Poppins', fontSize: 14, fontWeight: FontWeight.w500))),
+                    ],),
                   ],
                 ),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(40),
+                    borderRadius: BorderRadius.only(topRight: Radius.circular(20), topLeft: Radius.circular(20)),
                     color: Colors.white),
               ),
-            ),
           ],
         ),
+      ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: Colors.pinkAccent[100],
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.qr_code_2_rounded),
+            label: 'QR',
+            backgroundColor: Colors.pinkAccent[100],
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+            backgroundColor: Colors.pinkAccent[100],
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_box_rounded),
+            label: 'Profile',
+            backgroundColor: Colors.pinkAccent[100],
+          ),
+        ],
+        selectedItemColor: Colors.blue[900],
       ),
     );
   }
