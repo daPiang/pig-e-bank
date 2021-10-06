@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pig_e_bank/balance.dart';
 import 'package:pig_e_bank/transaction_history.dart';
 import 'package:pig_e_bank/transfer_money.dart';
 import 'account.dart';
@@ -6,10 +7,10 @@ import 'about.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+   
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -65,7 +66,7 @@ class Dashboard extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.only(right: 60),
                             child: Text(
-                              'Admin',
+                              Account.accName,
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 fontSize: 22.0,
@@ -78,7 +79,7 @@ class Dashboard extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.only(right: 60),
                             child: Text(
-                              '003821934275',
+                              Account.accNum,
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 fontSize: 16.0,
@@ -90,7 +91,7 @@ class Dashboard extends StatelessWidget {
                           Container(
                             padding: EdgeInsets.only(right: 60),
                             child: Text(
-                              'Savings Account',
+                              Account.accType,
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 fontSize: 16.0,
@@ -162,7 +163,13 @@ class Dashboard extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const Balance()));
+                            },
                             style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
                                     Color(0xFFf8bdd0)),
@@ -177,7 +184,6 @@ class Dashboard extends StatelessWidget {
                                     MaterialStateProperty.all(Size(330, 150))),
                           ),
                         ),
-                        //FloatingActionButton.extended(onPressed: (){}, label: Text('Help', style: TextStyle(fontFamily: 'Poppins')), icon: Icon(Icons.help_outline_outlined), backgroundColor: Colors.yellow[800],),
                       ],
                     ),
                     Container(

@@ -1,25 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:pig_e_bank/dashboard.dart';
-import 'package:pig_e_bank/confirm_transfer.dart';
 import 'package:pig_e_bank/transactions.dart';
 
 class TransactionHistory extends StatelessWidget{
-  // final String accNum;
-  // final String drpVal;
-  // final String transMsg;
-  
-   TransactionHistory ({Key? key, 
-    // required this.drpVal,
-    // required this.accNum,
-    // required this.transMsg
+  const TransactionHistory ({Key? key, 
   }) : super(key: key);
-
-  final List<Widget> itemsData = [];
 
   @override
   Widget build(BuildContext context){
     List<dynamic> responseList = TRANSACTION_DATA;
-    List<Widget> listItems = [];
+    
     return Scaffold(
       body: Column(
         children:[

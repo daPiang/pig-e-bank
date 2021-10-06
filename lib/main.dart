@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pig_e_bank/confirm_transfer.dart';
 import 'package:pig_e_bank/palette.dart';
-//import 'package:pig_e_bank/splash_screen.dart';
+import 'package:pig_e_bank/balance.dart';
 //import 'package:pig_e_bank/dashboard.dart';
 import 'package:flutter/services.dart';
 import 'package:pig_e_bank/splash_screen.dart';
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: const SplashScreen(),
+      home: const Balance(),
     );
   }
 }
