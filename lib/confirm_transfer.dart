@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pig_e_bank/dashboard.dart';
-import 'package:pig_e_bank/transaction_history.dart';
-import 'account.dart';
 
 class ConfirmTransfer extends StatelessWidget {
   final String drpVal;
@@ -36,52 +34,89 @@ class ConfirmTransfer extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: 30.0,
                 )),
-            Container(
-                width: double.infinity,
-                height: 250,
-                color: Colors.pink[50],
-                padding: EdgeInsets.only(left: 40),
-                child: Text('Sent to:',
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w600,
-                        color: Colors.grey[800],
-                        fontSize: 18))),
             Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(children: [
-                    Text(
-                      Account.bal.toStringAsFixed(2) + ' ' + drpVal,
-                      style: TextStyle(color: Colors.white),
+                Container(
+                    width: 350,
+                    height: 250,
+                    color: Colors.pink[50],
+                    padding: EdgeInsets.only(left: 20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 5.0),
+                          child: Text('Sent to : ',
+                              style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.grey[800],
+                                  fontSize: 22)),
+                        ),
+                        Text('Transfer Service : ' +' '+ drpVal,
+                            style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w400,
+                                color: Colors.grey[600],
+                                fontSize: 17)),
+                        Text('Account Number : ' +' '+ accNum,
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w400,
+                              color: Colors.grey[600],
+                              fontSize: 17)),
+                        Text('Amount of Money Sent : ',
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w400,
+                              color: Colors.grey[600],
+                              fontSize: 17)),
+                        Text('Remarks : ' + ' '+ transMsg,
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w400,
+                              color: Colors.grey[600],
+                              fontSize: 17)
+                        ),
+                      ],
                     ),
-                    Text(
-                      transMsg + ' ' + accNum,
-                      style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+              InkWell(
+                    child: Container(
+                      height: 40,
+                      margin: const EdgeInsets.symmetric(horizontal: 40),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFFF8bdd0),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          "Done",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
+                          ),
+                        ),
+                      ),
                     ),
-                    ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Dashboard()));
-
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //   builder: (context) => TransactionHistory(transMsg: transMsg,accNum: accNum, drpVal: drpVal,)
-                          //   ));
-                        },
-                        child: Text('Done'))
-                  ]),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-    //throw UnimplementedError();
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Dashboard()));
+                    },
+                  ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+            ],
+          ),
+        
+        )
+      );
   }
 }

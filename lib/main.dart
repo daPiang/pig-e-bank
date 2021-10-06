@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: const Balance(),
+      home: TransferMoney(),
     );
   }
 }
