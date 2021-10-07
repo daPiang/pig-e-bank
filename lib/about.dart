@@ -16,15 +16,16 @@ class About extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: const <Widget>[
-                Text('''Go, Patricia\n
+                Text('''GO, PATRICIA\n
                     Placeholder
                     
                     '''),
-                Text('''Villarosa, Patricia\n
-                    Placeholder
+                Text('''VILLAROSA, PATRICIA ANN\n
+                    An Information System college student at Malayan Colleges Mindanao who inspires to be a web and software developer in the future.\n
+                    I like to dance, playing games such as Call of Duty and watching series.
                     
                     '''),
-                Text('''Piang, Datu Anuarudin\n
+                Text('''PIANG, DATU ANUARUDIN\n
                     An aspiring game dev, currently a second-year EMC student at the well-known Malayan Colleges Mindanao. Loves food, music, and videogames.'''),
               ],
             ),
