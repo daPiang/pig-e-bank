@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pig_e_bank/dashboard.dart';
+import 'package:pig_e_bank/palette.dart';
 
 class ConfirmTransfer extends StatelessWidget {
   final String drpVal;
@@ -86,6 +87,27 @@ class ConfirmTransfer extends StatelessWidget {
                     ),
                   ),
                 ],
+              ),
+              Container(
+                width: 350,
+                height: 30,
+                color: BankTheme.primary,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text('Current Balance : '+ ' '+ balance.toString(),
+                          style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                    ),
+                  ],
+                )
               ),
               InkWell(
                 child: Container(
