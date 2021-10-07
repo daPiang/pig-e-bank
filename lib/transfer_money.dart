@@ -21,8 +21,12 @@ class _TransferMoneyState extends State<TransferMoney> {
   final lessSnack = const SnackBar(content: Text('Amount less than 200'));
   final greatSnack =
       const SnackBar(content: Text('Amount greater than current balance'));
+  final emptySnack = const SnackBar(content: Text('Field cannot be empty'));
+  final accSnack =
+      const SnackBar(content: Text('Account Number must be 12 digits'));
 
   String dropdownValue = 'Pig-E Bank';
+  //double processedBal = Account.bal;
 
   @override
   void dispose() {
@@ -33,34 +37,30 @@ class _TransferMoneyState extends State<TransferMoney> {
   }
 
   void validateFields() {
-    if (amountController.text.isNotEmpty == true) {
-      _isValidAmnt = true;
-    } else {
+    if (amountController.text.isEmpty == true) {
+      ScaffoldMessenger.of(context).showSnackBar(emptySnack);
       _isValidAmnt = false;
-    }
-    if (accountController.text.length == 12) {
-      _isValidAcc = true;
     } else {
+      if (double.parse(amountController.text) < 200) {
+        ScaffoldMessenger.of(context).showSnackBar(lessSnack);
+        _isValidAmnt = false;
+      } else if (double.parse(amountController.text) > Account.bal) {
+        ScaffoldMessenger.of(context).showSnackBar(greatSnack);
+        _isValidAmnt = false;
+      } else {
+        _isValidAmnt = true;
+      }
+    }
+    if (accountController.text.isEmpty == true) {
+      ScaffoldMessenger.of(context).showSnackBar(emptySnack);
       _isValidAcc = false;
-    }
-  }
-
-  void validateAmnt() {
-    if (double.parse(amountController.text) > Account.bal) {
-      ScaffoldMessenger.of(context).showSnackBar(greatSnack);
-    } else if (double.parse(amountController.text) < 200) {
-      ScaffoldMessenger.of(context).showSnackBar(lessSnack);
     } else {
-      double processedBal = Account.bal - double.parse(amountController.text);
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ConfirmTransfer(
-                    drpVal: dropdownValue,
-                    accNum: accountController.text,
-                    transMsg: msgController.text,
-                    balance: processedBal,
-                  )));
+      if (accountController.text.length != 12) {
+        ScaffoldMessenger.of(context).showSnackBar(accSnack);
+        _isValidAcc = false;
+      } else {
+        _isValidAcc = true;
+      }
     }
   }
 
@@ -75,9 +75,6 @@ class _TransferMoneyState extends State<TransferMoney> {
           UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
       labelStyle: TextStyle(color: Colors.white),
       hintStyle: TextStyle(color: Colors.grey),
-      errorBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Colors.red),
-      ),
     );
 
     return Scaffold(
@@ -87,7 +84,7 @@ class _TransferMoneyState extends State<TransferMoney> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        reverse: true,
+        reverse: false,
         child: Column(
           children: <Widget>[
             Container(
@@ -143,7 +140,6 @@ class _TransferMoneyState extends State<TransferMoney> {
                         isDense: true,
                         labelText: 'Amount',
                         hintText: '0.00',
-                        errorText: _isValidAmnt ? 'Enter a valid amount' : null,
                       ),
                     ),
                   ),
@@ -199,12 +195,10 @@ class _TransferMoneyState extends State<TransferMoney> {
                   style: const TextStyle(color: Colors.white),
                   controller: accountController,
                   decoration: txFldBase.copyWith(
-                      isDense: true,
-                      labelText: 'Account Number',
-                      hintText: '123 456 789 000',
-                      errorText: _isValidAcc
-                          ? 'Enter a 12-digit acocunt number'
-                          : null),
+                    isDense: true,
+                    labelText: 'Account Number',
+                    hintText: '123 456 789 000',
+                  ),
                 ),
                 TextField(
                   maxLength: 60,
@@ -232,8 +226,17 @@ class _TransferMoneyState extends State<TransferMoney> {
                     onPressed: () {
                       validateFields();
                       if (_isValidAmnt == true && _isValidAcc == true) {
-                        validateAmnt();
-                      } else {}
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => ConfirmTransfer(
+                                      drpVal: dropdownValue,
+                                      accNum: accountController.text,
+                                      transMsg: msgController.text,
+                                      balance: Account.bal,
+                                      userAmnt: amountController.text,
+                                    )));
+                      }
                     }),
               ]),
             ),
