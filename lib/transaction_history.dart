@@ -9,17 +9,15 @@ class TransactionHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<dynamic> responseList = TRANSACTION_DATA;
+    List<dynamic> responseList = transactionData;
 
     return Scaffold(
-        body: Column(
-      children: [
-        AppBar(
+        appBar: AppBar(
           title: const Text('Transaction History',
               style: TextStyle(
                   fontFamily: 'Poppins', color: Colors.white, fontSize: 18)),
           leading: IconButton(
-            icon: Icon(Icons.arrow_back_rounded),
+            icon: const Icon(Icons.arrow_back_rounded),
             color: Colors.white,
             onPressed: () {
               Navigator.push(context,
@@ -27,30 +25,34 @@ class TransactionHistory extends StatelessWidget {
             },
           ),
         ),
-        Column(
-          children: [
-            SizedBox(height: 25),
-            Container(
-              color: Colors.white,
-              height: 550,
-              child: Scrollbar(
-                child: ListView.builder(
-                    itemCount: 10,
-                    itemBuilder: (BuildContext context, int index) {
-                      return ListTile(
-                        title:
-                            Text("Account Number: " + responseList[index][0]),
-                        subtitle: Text(responseList[index][1] +
-                            "\nPHP" +
-                            responseList[index][2]),
-                        isThreeLine: true,
-                      );
-                    }),
-              ),
-            ),
-          ],
-        )
-      ],
-    ));
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Column(
+                children: [
+                  const SizedBox(height: 25),
+                  Container(
+                    color: Colors.white,
+                    height: MediaQuery.of(context).size.height,
+                    child: Scrollbar(
+                      child: ListView.builder(
+                          itemCount: 10,
+                          itemBuilder: (BuildContext context, int index) {
+                            return ListTile(
+                              title: Text(
+                                  "Account Number: " + responseList[index][0]),
+                              subtitle: Text(responseList[index][1] +
+                                  "\nPHP" +
+                                  responseList[index][2]),
+                              isThreeLine: true,
+                            );
+                          }),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+        ));
   }
 }

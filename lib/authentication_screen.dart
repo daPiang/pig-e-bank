@@ -39,6 +39,7 @@ class AuthenticationPage extends StatelessWidget {
                   const Text(
                     "Hey there, \nWelcome back",
                     style: TextStyle(
+                      fontFamily: 'Poppins',
                       fontSize: 30,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,

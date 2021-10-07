@@ -4,11 +4,8 @@ import 'package:pig_e_bank/dashboard.dart';
 import 'package:pig_e_bank/palette.dart';
 
 class ConfirmTransfer extends StatelessWidget {
-  final String drpVal;
-  final String transMsg;
-  final String accNum;
+  final String drpVal, transMsg, accNum, userAmnt;
   final double balance;
-  final String userAmnt;
   const ConfirmTransfer(
       {Key? key,
       required this.drpVal,
@@ -32,7 +29,7 @@ class ConfirmTransfer extends StatelessWidget {
                 height: 250.0,
                 width: 300.0,
               ),
-              Text("Transfer Successfully!",
+              const Text("Transfer Successfully!",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -45,7 +42,7 @@ class ConfirmTransfer extends StatelessWidget {
                     width: 350,
                     height: 250,
                     color: Colors.pink[50],
-                    padding: EdgeInsets.only(left: 20),
+                    padding: const EdgeInsets.only(left: 20),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,25 +56,25 @@ class ConfirmTransfer extends StatelessWidget {
                                   color: Colors.grey[800],
                                   fontSize: 22)),
                         ),
-                        Text('Transfer Service : ' + ' ' + drpVal,
+                        Text('Transfer Service : ' ' ' + drpVal,
                             style: TextStyle(
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w400,
                                 color: Colors.grey[600],
                                 fontSize: 17)),
-                        Text('Account Number : ' + ' ' + accNum,
+                        Text('Account Number : ' ' ' + accNum,
                             style: TextStyle(
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w400,
                                 color: Colors.grey[600],
                                 fontSize: 17)),
-                        Text('Amount of Money Sent : ' + ' ' + userAmnt,
+                        Text('Amount of Money Sent : ' ' ' + userAmnt,
                             style: TextStyle(
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w400,
                                 color: Colors.grey[600],
                                 fontSize: 17)),
-                        Text('Remarks : ' + ' ' + transMsg,
+                        Text('Remarks : ' ' ' + transMsg,
                             style: TextStyle(
                                 fontFamily: 'Poppins',
                                 fontWeight: FontWeight.w400,
@@ -89,26 +86,26 @@ class ConfirmTransfer extends StatelessWidget {
                 ],
               ),
               Container(
-                width: 350,
-                height: 30,
-                color: BankTheme.black,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8.0),
-                      child: Text('Current Balance : '+ ' '+ balance.toString(),
-                          style: TextStyle(
+                  width: 350,
+                  height: 30,
+                  color: BankTheme.black,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Text(
+                          'Current Balance : ' ' ' + balance.toStringAsFixed(2),
+                          style: const TextStyle(
                             fontFamily: 'Poppins',
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             fontSize: 20,
                           ),
                         ),
-                    ),
-                  ],
-                )
-              ),
+                      ),
+                    ],
+                  )),
               InkWell(
                 child: Container(
                   height: 40,

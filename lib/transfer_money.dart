@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'account.dart';
 import 'confirm_transfer.dart';
+import 'dashboard.dart';
 import 'palette.dart';
 
 class TransferMoney extends StatefulWidget {
@@ -79,11 +82,26 @@ class _TransferMoneyState extends State<TransferMoney> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF1b287d),
-        title: const Text('Transfer Money'),
+        title: const Text(
+          'Transfer Money',
+          style: TextStyle(
+            fontFamily: 'Poppins',
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            fontSize: 20,
+          ),
+        ),
         centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_rounded),
+          color: Colors.white,
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const Dashboard()));
+          },
+        ),
       ),
       body: SingleChildScrollView(
-        reverse: false,
         child: Column(
           children: <Widget>[
             Container(
@@ -97,24 +115,33 @@ class _TransferMoneyState extends State<TransferMoney> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                      height: 37,
+                      height: 45,
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Text(
                               'PHP ',
-                              style:
-                                  TextStyle(fontSize: 20, color: Colors.white),
+                              style: TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 20,
+                                  color: Colors.white),
                             ),
                             Text(
                               Account.bal.toStringAsFixed(2),
                               style: const TextStyle(
-                                  fontSize: 30, color: Colors.white),
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w100,
+                                  fontSize: 30,
+                                  color: Colors.white),
                             )
                           ]),
                     ),
                     const Text('AVAILABLE BALANCE',
-                        style: TextStyle(fontSize: 12, color: Colors.white)),
+                        style: TextStyle(
+                            fontFamily: 'Poppins',
+                            fontSize: 12,
+                            color: Colors.white)),
                     const SizedBox(height: 12)
                   ]),
             ),
@@ -126,14 +153,16 @@ class _TransferMoneyState extends State<TransferMoney> {
                     padding: EdgeInsets.only(top: 15),
                     child: Text('PHP',
                         style: TextStyle(
+                          fontFamily: 'Poppins',
                           color: Colors.white,
                         )),
                   ),
                   const SizedBox(width: 10),
                   SizedBox(
-                    width: 202,
+                    width: 190,
                     child: TextField(
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(
+                          fontFamily: 'Poppins', color: Colors.white),
                       controller: amountController,
                       decoration: txFldBase.copyWith(
                         isDense: true,
@@ -143,55 +172,50 @@ class _TransferMoneyState extends State<TransferMoney> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: Row(
-                      children: [
-                        const SizedBox(
-                          width: 30,
-                        ),
-                        DropdownButton<String>(
-                          dropdownColor: Colors.grey[800],
-                          value: dropdownValue,
-                          icon: const Icon(
-                            Icons.arrow_drop_down,
-                            color: Colors.white,
-                          ),
-                          iconSize: 24,
-                          elevation: 16,
-                          style: const TextStyle(color: Colors.white),
-                          underline: Container(
-                            height: 1,
-                            color: Colors.white,
-                          ),
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              dropdownValue = newValue!;
-                            });
-                          },
-                          items: <String>[
-                            'Pig-E Bank',
-                            'GCash',
-                            'Paymaya',
-                            'BDO',
-                            'RCBC',
-                            'Landbank',
-                            'BPI',
-                            'Coins.ph'
-                          ].map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
-                        ),
-                      ],
+                    padding: const EdgeInsets.only(top: 25, left: 20.7),
+                    child: DropdownButton<String>(
+                      dropdownColor: Colors.grey[800],
+                      value: dropdownValue,
+                      icon: const Icon(
+                        Icons.arrow_drop_down,
+                        color: Colors.white,
+                      ),
+                      iconSize: 24,
+                      elevation: 16,
+                      style: const TextStyle(
+                          fontFamily: 'Poppins', color: Colors.white),
+                      underline: Container(
+                        height: 1,
+                        color: Colors.white,
+                      ),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          dropdownValue = newValue!;
+                        });
+                      },
+                      items: <String>[
+                        'Pig-E Bank',
+                        'GCash',
+                        'Paymaya',
+                        'BDO',
+                        'RCBC',
+                        'Landbank',
+                        'BPI',
+                        'Coins.ph'
+                      ].map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
                     ),
                   ),
                 ]),
                 TextField(
                   maxLength: 12,
                   maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(
+                      fontFamily: 'Poppins', color: Colors.white),
                   controller: accountController,
                   decoration: txFldBase.copyWith(
                     isDense: true,
@@ -200,27 +224,30 @@ class _TransferMoneyState extends State<TransferMoney> {
                   ),
                 ),
                 TextField(
-                  maxLength: 60,
+                  maxLength: 20,
                   maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(
+                      fontFamily: 'Poppins', color: Colors.white),
                   controller: msgController,
                   decoration: txFldBase.copyWith(
-                    labelText: 'Message',
+                    labelText: 'Remarks',
                     isDense: true,
                   ),
                 ),
                 ElevatedButton(
                     style: ButtonStyle(
+                        elevation: MaterialStateProperty.all(0),
                         backgroundColor:
                             MaterialStateProperty.all(BankTheme.salmon),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
+                          borderRadius: BorderRadius.circular(40),
                         ))),
                     child: const Text(
                       'Confirm',
-                      style: TextStyle(color: BankTheme.black),
+                      style: TextStyle(
+                          fontFamily: 'Poppins', color: BankTheme.black),
                     ),
                     onPressed: () {
                       validateFields();

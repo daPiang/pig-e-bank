@@ -3,7 +3,6 @@ import 'package:pig_e_bank/palette.dart';
 import 'package:flutter/services.dart';
 import 'package:pig_e_bank/splash_screen.dart';
 
-
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: SplashScreen(),
+      home: const SplashScreen(),
     );
   }
 }

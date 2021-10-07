@@ -38,14 +38,12 @@ class _LoginState extends State<Login> {
     });
   }
 
-  final InputDecoration txFldBase = const InputDecoration(
-    enabledBorder:
-        OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-    focusedBorder:
-        OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-    //labelText: 'Username',
-    labelStyle: TextStyle(color: Colors.white),
-    //suffixIcon: Icon(Icons.person, color: Colors.white)
+  final InputDecoration txFldBase = InputDecoration(
+    fillColor: const Color(0xFF29326e),
+    filled: true,
+    border: OutlineInputBorder(
+        borderSide: BorderSide.none, borderRadius: BorderRadius.circular(40)),
+    hintStyle: const TextStyle(fontFamily: 'Poppins', color: Colors.white),
   );
 
   @override
@@ -60,22 +58,24 @@ class _LoginState extends State<Login> {
             children: [
               Image.asset('assets/images/pigeBank.png'),
               TextField(
-                style: const TextStyle(color: Colors.white),
+                style:
+                    const TextStyle(fontFamily: 'Poppins', color: Colors.white),
                 controller: _userController,
                 decoration: txFldBase.copyWith(
-                    labelText: 'Username',
+                    hintText: 'Username',
                     suffixIcon: const Icon(Icons.person, color: Colors.white)),
               ),
               const SizedBox(
                 height: 10,
               ),
               TextField(
-                  style: const TextStyle(color: Colors.white),
+                  style: const TextStyle(
+                      fontFamily: 'Poppins', color: Colors.white),
                   controller: _passController,
                   obscureText: _isHidden,
                   decoration: txFldBase.copyWith(
-                      labelText: 'Password',
-                      suffixIcon: InkWell(
+                      hintText: 'Password',
+                      suffixIcon: GestureDetector(
                         onTap: _togglePass,
                         child: Icon(
                           _isHidden ? Icons.visibility_off : Icons.visibility,
@@ -85,6 +85,7 @@ class _LoginState extends State<Login> {
               const SizedBox(height: 20),
               ElevatedButton(
                   style: ButtonStyle(
+                      elevation: MaterialStateProperty.all(0),
                       backgroundColor:
                           MaterialStateProperty.all(BankTheme.salmon),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -93,7 +94,8 @@ class _LoginState extends State<Login> {
                       ))),
                   child: const Text(
                     'Login',
-                    style: TextStyle(color: Colors.black),
+                    style:
+                        TextStyle(fontFamily: 'Poppins', color: Colors.black),
                   ),
                   onPressed: () {
                     authLogin();
