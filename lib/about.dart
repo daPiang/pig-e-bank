@@ -17,7 +17,8 @@ class About extends StatelessWidget {
             child: Column(
               children: const <Widget>[
                 Text('''GO, PATRICIA\n
-                    Placeholder
+                    A 21 year-old Computer Science student from Malayan Colleges Mindanao. I want to work in the field of Virtual and Augmented Reality.\n
+                    My Hobbies include playing games, designing streetwear clothing, and spending all my money on GrabFood.
                     
                     '''),
                 Text('''VILLAROSA, PATRICIA ANN\n
