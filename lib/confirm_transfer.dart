@@ -91,7 +91,7 @@ class ConfirmTransfer extends StatelessWidget {
               Container(
                 width: 350,
                 height: 30,
-                color: BankTheme.primary,
+                color: BankTheme.black,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
