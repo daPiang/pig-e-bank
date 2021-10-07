@@ -21,8 +21,8 @@ class About extends StatelessWidget {
                     
                     '''),
                 Text('''VILLAROSA, PATRICIA ANN\n
-                    An Information System college student at Malayan Colleges Mindanao who inspires to be a web and software developer in the future.\n
-                    I like to dance, playing games such as Call of Duty and watching series.
+                    An Information System college student at Malayan Colleges Mindanao who aspires to be a web and software developer in the future.\n
+                    I like to dance, play games such as Call of Duty, and watch series.
                     
                     '''),
                 Text('''PIANG, DATU ANUARUDIN\n

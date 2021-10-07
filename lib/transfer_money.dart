@@ -26,7 +26,6 @@ class _TransferMoneyState extends State<TransferMoney> {
       const SnackBar(content: Text('Account Number must be 12 digits'));
 
   String dropdownValue = 'Pig-E Bank';
-  //double processedBal = Account.bal;
 
   @override
   void dispose() {
@@ -226,6 +225,8 @@ class _TransferMoneyState extends State<TransferMoney> {
                     onPressed: () {
                       validateFields();
                       if (_isValidAmnt == true && _isValidAcc == true) {
+                        Account.bal =
+                            Account.bal - double.parse(amountController.text);
                         Navigator.push(
                             context,
                             MaterialPageRoute(
